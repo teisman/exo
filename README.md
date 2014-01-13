@@ -15,6 +15,8 @@ Exo is a lightweight map-reduce framework that uses the ØMQ messaging library.
         yield (key, sum(val))
 
     task = exo.Task()
+    task.mapper = mapper
+    task.reducer = reducer
     task.input = \
     ["Our mother was sister to those noble gentlemen, John, William, Gavin,",
     "James and Robert James, who one and all devoted their fortunes and",
@@ -25,8 +27,7 @@ Exo is a lightweight map-reduce framework that uses the ØMQ messaging library.
     "every true Carolinian is ready to declare, that 'he who rightfully",
     "bears the name of James is always ready for the foe, the first in",
     "attack and the last in retreat.'"]
-    task.mapper = mapper
-    task.reducer = reducer
+
     output = task.execute()
     for line in output:
         print line
